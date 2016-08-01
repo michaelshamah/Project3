@@ -5,21 +5,14 @@ $(document).ready(function() {
   let country= $(event.target).prev().val()
   let school = $(event.target).prev().prev().val()
   let url= `/apis?name=${school}&country=${country}`
-  fetch(url).then(data=>{
-   data.json()
-  }).then(data=>{
-    console.log(data)
-    createList(univs)
+  fetch(url).then(data=>data.json()).then(data=>{
+    data = JSON.parse(data)
+    createList(data)
     })
-  // let univs= [{web_page: "http://www.mtsu.edu/", country: "USA", domain: "mtsu.edu", name: "Middle Tennessee State University"},
-  //   {web_page: "http://www.mga.edu/", country: "USA", domain: "mga.edu", name: "Middle Georgia State College"},
-  //   {web_page: "http://www.middlebury.edu/", "country": "USA", domain: "middlebury.edu", name: "Middlebury College"}]
-  // createList(univs)
   }
 
 
   function createList(univs){
-    console.log('hi')
     $container= $('#container')
     univs.forEach(univ=>{
       let $name= $('<li>').text(univ.name)
@@ -28,17 +21,33 @@ $(document).ready(function() {
         class: 'save',
         id: univ.name}).text('save');
       $container.append($name).append($website)
-
       $container.append($save)
+      $save.click(saveUniv);
     })
   }
 
   function saveUniv(event){
-    event.preventDefault();
     console.log('saved')
+    let name = $(event.target).prev().prev().text()
+    let website =$(event.target).prev().text()
+    console.log(name)
+    console.log(website)
+    fetch("/univs", {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body : JSON.stringify({
+        name: name,
+        website: website
+      })
+    }).then(data=>data.json()).then(data=>{
+      console.log('saved')
+      return data
+      })
+  };
 
-  }
-  // $('button').c
+
   $('#button').click(getUniv);
 
 });

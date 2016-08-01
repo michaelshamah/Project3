@@ -2,12 +2,20 @@ class UnivsController < ApplicationController
 
 
  def index
-    response =HTTParty.get("http://universities.hipolabs.com/search?name=middle")
-    render :json => response
+    render :json => Univ.All
   end
 
   def show
     render :json => Univ.find(params[:id])
+  end
+
+  def create
+    console.log('creating')
+    @Univ = Univ.create({
+                      :name => params[:name],
+                      :website => params[:website],
+                    })
+    render :json => @Univ
   end
 
 end
