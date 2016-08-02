@@ -14,6 +14,7 @@ $(document).ready(function() {
 
   function createList(univs){
     $container= $('tbody')
+    $container.empty()
     univs.forEach((univ, index)=>{
       let row= $('<tr>')
       let $number= $('<td>').text(index)

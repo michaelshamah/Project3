@@ -17,9 +17,12 @@
   background-color: #B3E5FC;
  }
  nav{
-  top: 0%;
+  margin-top: 0px;
   color: #ffffff;
   background-color: #03A9F4;
   text-align: center;
-  height: 20vh;
+  height: 15vh;
+ }
+ #main{
+  margin-top: 0px;
  }
