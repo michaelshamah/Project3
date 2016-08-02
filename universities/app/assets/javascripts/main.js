@@ -44,6 +44,7 @@ $(document).ready(function() {
       console.log('saved')
       return data
       })
+    $(event.target).parent().remove()
   };
   // function updateUniv(event){
   //   let name = $(event.target).prev().prev().text()
@@ -107,6 +108,11 @@ $(document).ready(function() {
       console.log('deleted')
       return data
       })
+    $(event.target).prev().prev().prev().remove()
+    $(event.target).prev().prev().remove()
+    $(event.target).prev().remove()
+    $(event.target).remove()
+
   };
   myUniv()
   $('#button').click(getUniv);

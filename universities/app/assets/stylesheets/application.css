@@ -13,11 +13,11 @@
  *= require_tree .
  *= require_self
  */
- body{
+ #body{
   background-color: #B3E5FC;
  }
  nav{
-
+  top: 0%;
   color: #ffffff;
   background-color: #03A9F4;
   text-align: center;
