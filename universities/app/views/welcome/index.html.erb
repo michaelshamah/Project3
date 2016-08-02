@@ -7,12 +7,52 @@
   <link rel="stylesheet" href="">
 </head>
 <body>
+<nav>
+  <h1>
+
+  University Searcher (& Saver)
+  </h1>
+</nav>
 <form>
   <input type="text" placeholder='Search universites' />
   <input  type="text" placeholder='Search countries' />
-  <input id='button' type="SUBMIT" data-url='/univs'>
+  <input id='button' class="btn btn-default btn-info" type="SUBMIT" data-url='/univs'>
 </form>
-<div id="container">
+<table class='list col-md-6' id="container">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Website</th>
+      <th>Save</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+<div class='list col-md-6' id= "mine">
+
 </div>
+<!--taken in part from http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_modal&stacked=h-->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </body>
 </html>

@@ -2,7 +2,7 @@ class UnivsController < ApplicationController
 
 
  def index
-    render :json => Univ.All
+    render :json => Univ.all
   end
 
   def show
@@ -10,12 +10,24 @@ class UnivsController < ApplicationController
   end
 
   def create
-    console.log('creating')
     @Univ = Univ.create({
                       :name => params[:name],
-                      :website => params[:website],
+                      :site => params[:website],
                     })
     render :json => @Univ
+  end
+  def update
+
+  end
+
+  def destroy
+    @univ = Univ.find(params[:id])
+    if @univ
+      @univ.destroy
+      render :json => {:deleted => true} if @univ
+    else
+      render :json => {:deleted => false}
+    end
   end
 
 end
